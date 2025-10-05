@@ -1,0 +1,106 @@
+@startuml
+left to right direction
+title CJ's Powerhouse Motorshop Web System - Use Case Diagram
+
+actor Customer
+actor Admin
+actor Cashier
+actor Rider
+actor Mechanic
+
+rectangle "CJ's Powerhouse Web System" as System {
+  ' --- Customer use cases ---
+  usecase "Register / Login" as C1
+  usecase "Browse Products" as C2
+  usecase "Add to Cart" as C3
+  usecase "Add to Wishlist" as C4
+  usecase "Checkout" as C5
+  usecase "Track Order" as C6
+  usecase "View E‑Receipts" as C7
+  usecase "Request Emergency Rescue" as C8
+
+  ' --- Admin use cases ---
+  usecase "Manage Accounts" as A1
+  usecase "Manage Products (CRUD)" as A2
+  usecase "Record Buyouts" as A3
+  usecase "Maintain Barangay Delivery Rates" as A4
+  usecase "Monitor Orders & Sales" as A5
+  usecase "View Emergency Requests" as A6
+  usecase "Assign Mechanics" as A7
+  usecase "Generate Reports" as A8
+
+  ' --- Cashier use cases ---
+  usecase "Process Orders" as H1
+  usecase "Update Status to\n\"Ready to Ship\"" as H2
+  usecase "Notify Rider" as H3
+  usecase "Print / E‑Receipt" as H4
+  usecase "Duty Log" as H5
+  usecase "Generate Sales Reports" as H6
+
+  ' --- Rider use cases ---
+  usecase "View Assigned Orders" as R1
+  usecase "Update to \"On‑Ship\"" as R2
+  usecase "Mark Delivered" as R3
+  usecase "Notify Customer" as R4
+
+  ' --- Mechanic use cases ---
+  usecase "Update Availability" as M1
+  usecase "View Emergency Requests" as M2
+  usecase "Respond to Emergencies" as M3
+  usecase "Mark Request as Completed" as M4
+
+  ' --- Supporting (included/extended) use cases ---
+  usecase "Compute Delivery Fee" as S1
+  usecase "Select Payment Method\n(GCash / COD)" as S2
+  usecase "Verify Payment (GCash)" as S3
+}
+
+' --- Associations (actors to use cases) ---
+Customer -- C1
+Customer -- C2
+Customer -- C3
+Customer -- C4
+Customer -- C5
+Customer -- C6
+Customer -- C7
+Customer -- C8
+
+Admin -- A1
+Admin -- A2
+Admin -- A3
+Admin -- A4
+Admin -- A5
+Admin -- A6
+Admin -- A7
+Admin -- A8
+
+Cashier -- H1
+Cashier -- H4
+Cashier -- H5
+Cashier -- H6
+
+Rider -- R1
+Rider -- R2
+Rider -- R3
+Rider -- R4
+
+Mechanic -- M1
+Mechanic -- M2
+Mechanic -- M3
+Mechanic -- M4
+
+' --- Include / Extend relationships ---
+C5 --> S1 : <<include>>
+C5 --> S2 : <<include>>
+S3 ..> C5 : <<extend>>\n[when payment = GCash]
+
+H1 --> H2 : <<include>>
+H1 --> H3 : <<include>>
+
+A6 --> A7 : <<include>>
+C8 --> M2
+M2 --> M3 : <<include>>
+M3 --> M4 : <<include>>
+
+@enduml
+

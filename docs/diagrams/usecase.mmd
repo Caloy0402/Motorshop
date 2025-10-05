@@ -1,0 +1,63 @@
+flowchart LR
+  subgraph System[ CJ's Powerhouse Web System ]
+    C1[Register / Login]
+    C2[Browse Products]
+    C3[Add to Cart]
+    C4[Add to Wishlist]
+    C5[Checkout]
+    C6[Track Order]
+    C7[View E‑Receipts]
+    C8[Request Emergency Rescue]
+
+    A1[Manage Accounts]
+    A2[Manage Products (CRUD)]
+    A3[Record Buyouts]
+    A4[Maintain Barangay Delivery Rates]
+    A5[Monitor Orders & Sales]
+    A6[View Emergency Requests]
+    A7[Assign Mechanics]
+    A8[Generate Reports]
+
+    H1[Process Orders]
+    H2[Update Status to "Ready to Ship"]
+    H3[Notify Rider]
+    H4[Print / E‑Receipt]
+    H5[Duty Log]
+    H6[Generate Sales Reports]
+
+    R1[View Assigned Orders]
+    R2[Update to "On‑Ship"]
+    R3[Mark Delivered]
+    R4[Notify Customer]
+
+    M1[Update Availability]
+    M2[View Emergency Requests]
+    M3[Respond to Emergencies]
+    M4[Mark Request as Completed]
+
+    S1[(Compute Delivery Fee)]
+    S2[(Select Payment Method)]
+    S3((Verify Payment (GCash)))
+  end
+
+  Customer((Customer)) --- C1 & C2 & C3 & C4 & C5 & C6 & C7 & C8
+  Admin((Admin)) --- A1 & A2 & A3 & A4 & A5 & A6 & A7 & A8
+  Cashier((Cashier)) --- H1 & H4 & H5 & H6
+  Rider((Rider)) --- R1 & R2 & R3 & R4
+  Mechanic((Mechanic)) --- M1 & M2 & M3 & M4
+
+  C5 --> S1
+  C5 --> S2
+  S3 -.-> C5
+  H1 --> H2
+  H1 --> H3
+  A6 --> A7
+  C8 --> M2
+  M2 --> M3 --> M4
+
+
+
+
+
+
+

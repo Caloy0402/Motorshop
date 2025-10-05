@@ -1,0 +1,42 @@
+@startuml
+left to right direction
+title Conceptual Framework - CJ's Powerhouse Motorshop Web System
+
+rectangle "INPUT" as IN {
+  A : Customer Info
+  B : Inventory Data
+  C : Emergency Requests
+  D : Payment Events (GCash/COD)
+  E : Time/Duty Logs
+  F : Login Credentials
+  G : Barangay Fare Matrix
+  H : Rider Availability
+}
+
+rectangle "PROCESS" as PR {
+  P1 : Product Browsing & Ordering
+  P2 : Real-time Updates (SSE)
+  P3 : Payment Processing (PayMongo/COD)
+  P4 : Delivery Fee Computation\n(Barangay + Method + Free Shipping)
+  P5 : Inventory Management
+  P6 : Order Fulfillment & Rider Assignment
+  P7 : Emergency Dispatch Coordination
+  P8 : Sales Recording & Duty Logging
+  P9 : Performance Monitoring
+}
+
+rectangle "OUTPUT" as OUT {
+  O1 : Order Confirmations & E-Receipts
+  O2 : Inventory Updates
+  O3 : Emergency Dispatch Notifications
+  O4 : Delivery Assignments & Status
+  O5 : Sales Reports
+  O6 : Employee Duty/Performance Reports
+  O7 : Increased Customer Satisfaction
+}
+
+IN --> PR
+PR --> OUT
+
+@enduml
+
