@@ -1,5 +1,5 @@
 <?php
-// Start session and check admin access
+// new
 session_start();
 
 // Dynamically determine the base URL
