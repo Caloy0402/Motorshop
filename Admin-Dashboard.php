@@ -2,6 +2,16 @@
 // Start session and check admin access
 session_start();
 
+// Dynamically determine the base URL
+if (php_sapi_name() === 'cli') {
+    $baseURL = './';
+} else {
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'];
+    $path = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+    $baseURL = $protocol . '://' . $host . $path . '/';
+}
+
 // Check if user is logged in and is admin
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
     header("Location: signin.php");
