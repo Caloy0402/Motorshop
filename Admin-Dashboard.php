@@ -1,5 +1,5 @@
 <?php
-// new
+// Start session and check admin access
 session_start();
 
 // Dynamically determine the base URL
@@ -336,7 +336,7 @@ $stmt3->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="icon" type="image/png" href="<?= $baseURL ?>image/logo.png">
+    <link rel="icon" type="image/png" href="<?= isset($baseURL) ? $baseURL : './' ?>image/logo.png">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">

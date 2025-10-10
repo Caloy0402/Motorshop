@@ -31,9 +31,10 @@ function getDashboardMetrics($conn, $user_id = null) {
             JOIN transactions t ON o.id = t.order_id
             WHERE o.order_status = 'completed' AND DATE(t.completed_date_transaction) = '$today'";
     
-    if ($user_id) {
-        $sql .= " AND cashier_id = $user_id";
-    }
+    // Note: cashier_id column doesn't exist in orders table
+    // if ($user_id) {
+    //     $sql .= " AND cashier_id = $user_id";
+    // }
     
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
@@ -45,9 +46,10 @@ function getDashboardMetrics($conn, $user_id = null) {
             JOIN transactions t ON o.id = t.order_id
             WHERE o.order_status = 'completed' AND DATE(t.completed_date_transaction) = '$today'";
     
-    if ($user_id) {
-        $sql .= " AND cashier_id = $user_id";
-    }
+    // Note: cashier_id column doesn't exist in orders table
+    // if ($user_id) {
+    //     $sql .= " AND cashier_id = $user_id";
+    // }
     
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
@@ -65,9 +67,10 @@ function getDashboardMetrics($conn, $user_id = null) {
             FROM orders
             WHERE order_status = 'completed' AND DATE(order_date) = '$today'";
     
-    if ($user_id) {
-        $sql .= " AND cashier_id = $user_id";
-    }
+    // Note: cashier_id column doesn't exist in orders table
+    // if ($user_id) {
+    //     $sql .= " AND cashier_id = $user_id";
+    // }
     
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
